@@ -1,0 +1,18 @@
+{% extends "navbar_template.html" %}
+
+{% block content %}
+    <h1>login</h1>
+    <form action="/signin" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="email" placeholder="email">
+        <input type="text" name="phone" placeholder="phone">
+        <input type="text" name="password" placeholder="password">
+        <input type="submit" value="Submit">
+    </form>
+
+    <style>
+        form{
+            display: grid;
+        }
+    </style>
+{% endblock %}
