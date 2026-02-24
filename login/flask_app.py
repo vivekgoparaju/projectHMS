@@ -33,7 +33,7 @@ def login():
             session['isLoggedIn']=True
             return redirect("home")
         else:
-            return "<script>alert('Wrong Crentials'); window.location.href='./login'</script>"
+            return {"status":False}
     else:
         return render_template('login.html')
 
@@ -41,7 +41,6 @@ def login():
 def logout():
     session['isLoggedIn']=False
     return redirect('login')
-
 @app.route('/signin', methods=['POST', 'GET'])
 def signin():
     if request.method=='POST':
@@ -58,6 +57,17 @@ def signin():
 @app.route('/t')
 def t():
     return render_template('t.html')
+
+@app.route('/book_appointment')
+def book_appointment():
+    return render_template('book_appointment.html')
+
+@app.route('/doctors')
+def doctors():
+    doctors=[1,2,3,4,5]
+    return render_template('doctors.html', doctors=doctors)
+
+
 
 if __name__=='__main__':
     app.run(debug=True)
