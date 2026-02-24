@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: monospace;
+        }
+        nav{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        nav>div{
+            display: flex;
+            flex-direction: row;
+        }
+
+        nav>div.startingNav>p{
+            margin-right: 3.5vw;
+            gap: 2vw;
+            text-decoration: none;
+        }
+        nav>div>p>a{
+            text-decoration: none;
+            color: black;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+
+        nav>div.endingNav>p{
+            margin-left: 3.5vw;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="startingNav">
+            <p><a href="home" class="home">Home</a></p>
+            <p><a href="doctors" class="doctors">Doctors</a></p>
+            <p><a href="book_Appointment" class="bookAppointment">Book Appointment</a></p>
+        </div>
+        <div class="endingNav">
+            <p><a href="profile" class="profile">Profile</a></p>
+            <p><a href="logout" class="logout">Logout</a></p>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}  
+</body>
+</html>
