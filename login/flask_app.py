@@ -64,8 +64,29 @@ def book_appointment():
 
 @app.route('/doctors')
 def doctors():
-    doctors=[1,2,3,4,5]
-    return render_template('doctors.html', doctors=doctors)
+    doctors={
+        0:{
+            'Name':'Vivek',
+            'Specialisation':'Cardiologist',
+        },
+        1:{
+            'Name':'Phani',
+            'Specialisation':'Kidney'
+        },
+        2:{
+            'Name':'Phani',
+            'Specialisation':'Kidney'
+        },
+        3:{
+            'Name':'Phani',
+            'Specialisation':'Kidney'
+        },
+        4:{
+            'Name':'Phani',
+            'Specialisation':'Kidney'
+        }
+    }
+    return render_template('doctors.html', doc=doctors)
 
 
 

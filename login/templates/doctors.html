@@ -5,13 +5,13 @@
 <br>
 <h1>Doctors</h1>
 
-<div class="container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-    {% for i in doctors %}
+<div class="container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    {% for i in doc %}
     <div class="doctorCard" style="border: 1px solid black;width: fit-content;">
         <img src="{{url_for('static', filename='user-solid-full.svg')}}"  alt="profile">
         <div class="doctor_info">
-            <h3>Name</h3>
-            <h5>Specialization</h5>
+            <h3>Name : {{doc[i]['Name']}}</h3>
+            <h5 style="font-size: 1.1em;">Specialization: {{doc[i]['Specialisation']}}</h5>
             <div class="docBtn">
                 <button>Profile</button>
                 <button>Book Appointment</button>
@@ -19,5 +19,6 @@
         </div>
     </div>
     {% endfor %}
+    
 </div>
 {% endblock %}

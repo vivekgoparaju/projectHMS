@@ -9,9 +9,10 @@
             font-family: monospace;
         }
         nav{
+            background-color: black;
+            color: white;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
         }
 
         nav>div{
@@ -25,15 +26,12 @@
             text-decoration: none;
         }
         nav>div>p>a{
+            color: white;
             text-decoration: none;
-            color: black;
             font-size: 1.25em;
             font-weight: bold;
         }
 
-        nav>div.endingNav>p{
-            margin-left: 3.5vw;
-        }
     </style>
 </head>
 <body>
@@ -42,8 +40,6 @@
             <p><a href="home" class="home">Home</a></p>
             <p><a href="doctors" class="doctors">Doctors</a></p>
             <p><a href="book_Appointment" class="bookAppointment">Book Appointment</a></p>
-        </div>
-        <div class="endingNav">
             <p><a href="profile" class="profile">Profile</a></p>
             <p><a href="logout" class="logout">Logout</a></p>
         </div>
