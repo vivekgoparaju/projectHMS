@@ -1,0 +1,135 @@
+<div class="signin-background">
+    <div class="signin-wrapper">
+        <div class="signin-card">
+            <h2 class="signin-title">Sign In</h2>
+            <p class="signin-subtitle">Access your account to manage appointments and profile.</p>
+            <form method="POST" action="{{ url_for('patient.auth.signin') }}">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn-submit">Sign In</button>
+            </form>
+            <p class="signin-footer">Don't have an account? <a href="{{ url_for('patient.auth.signup') }}">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Full-page background */
+.signin-background {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0f2f1;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+/* Wrapper to center the card */
+.signin-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+/* Card styling */
+.signin-card {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title and subtitle */
+.signin-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #006064;
+}
+.signin-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #b0bec5;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-group input:focus {
+    border-color: #006064;
+    box-shadow: 0 0 0 3px rgba(0, 96, 100, 0.15);
+}
+
+/* Button styling */
+.btn-submit {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #006064 0%, #00bcd4 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-submit:hover {
+    background: linear-gradient(90deg, #004d51 0%, #00acc1 100%);
+}
+
+/* Footer link */
+.signin-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+.signin-footer a {
+    color: #006064;
+    font-weight: 500;
+    text-decoration: none;
+}
+.signin-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+</style>

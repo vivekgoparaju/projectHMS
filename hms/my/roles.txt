@@ -1,0 +1,24 @@
+roles
+    admin
+    doctor
+    patient(user)
+
+admin:
+    login
+    admin-dashboard
+    total management system
+    crud ops on doctors data
+
+doctor
+    login
+    profile
+    schedule
+    patients
+    history
+
+patient(user)
+    signin, signup
+    profile
+    medical history
+    see doctors
+    book appointment

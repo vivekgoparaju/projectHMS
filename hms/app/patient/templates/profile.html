@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="profile-page-background">
+    <div class="profile-page-wrapper">
+
+        <div class="profile-card">
+
+            <!-- Header Section -->
+            <div class="profile-header">
+                <div class="avatar-section">
+                    <img src="{{ url_for('patient.static', filename='default-avatar.png') }}" alt="Profile Image" class="profile-avatar">
+                    <input type="file" id="avatar-upload" style="display:none;">
+                    <button class="btn-upload" onclick="document.getElementById('avatar-upload').click();">Change Avatar</button>
+                </div>
+
+                <div class="user-details">
+                    <h2 class="user-name">{{ user.name }}</h2>
+                    <p class="user-role">{{ user.role }}</p>
+                    <p class="user-location">{{ user.location }}</p>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="logout" class="btn btn-outline logout">Logout</a>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Editable Body Section -->
+            <form method="POST" action="{{ url_for('patient.update_profile') }}">
+                <div class="profile-body-grid">
+
+                    <!-- Personal Information -->
+                    <div class="profile-section">
+                        <h3 class="section-title">Personal Information</h3>
+
+                        <div class="info-item">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" value="{{ user.name }}" required>
+                        </div>
+
+                        <div class="info-item">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+
+                        <div class="info-item">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" name="phone" value="{{ user.phone }}">
+                        </div>
+
+                        <div class="info-item">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" value="{{ user.location }}">
+                        </div>
+                    </div>
+
+                    <!-- Account Details -->
+                    <div class="profile-section">
+                        <h3 class="section-title">Account Details</h3>
+
+                        <div class="info-item">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" value="{{ user.username }}" required>
+                        </div>
+
+                        <div class="info-item">
+                            <label for="joined_date">Member Since</label>
+                            <input type="text" id="joined_date" name="joined_date" value="{{ user.joined_date }}" readonly>
+                        </div>
+
+                        <div class="info-item">
+                            <label for="password">Change Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter new password">
+                        </div>
+
+                        <div class="info-item">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="profile-save">
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+<style>
+/* Page background */
+.profile-page-background {
+    min-height: 100vh;
+    padding: 2rem;
+    background: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Wrapper */
+.profile-page-wrapper {
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Card */
+.profile-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    padding: 2.5rem 3rem;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.avatar-section {
+    position: relative;
+    text-align: center;
+}
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid #006064;
+}
+.btn-upload {
+    background: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.btn-upload:hover {
+    background: #008c9e;
+}
+
+.user-details {
+    flex: 1;
+    min-width: 200px;
+}
+.user-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #006064;
+}
+.user-role, .user-location {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Actions */
+.profile-actions .logout {
+    color: #006064;
+    border: 1px solid #006064;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.profile-actions .logout:hover {
+    background: #006064;
+    color: #fff;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 1.5rem 0;
+}
+
+/* Grid body */
+.profile-body-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Section styling */
+.profile-section {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #006064;
+}
+
+/* Info items */
+.info-item {
+    margin-bottom: 1rem;
+}
+.info-item label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+.info-item input {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #b0bec5;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+.info-item input:focus {
+    border-color: #006064;
+    box-shadow: 0 0 0 3px rgba(0, 96, 100, 0.15);
+}
+
+/* Save button */
+.profile-save {
+    margin-top: 2rem;
+    text-align: center;
+}
+.btn-save {
+    background: linear-gradient(90deg, #006064 0%, #00bcd4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.btn-save:hover {
+    background: linear-gradient(90deg, #004d51 0%, #00acc1 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-body-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}

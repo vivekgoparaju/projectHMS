@@ -1,0 +1,58 @@
+hospital_management/
+│
+├── run.py
+├── config.py
+├── requirements.txt
+│
+├── app/
+│   │
+│   ├── __init__.py
+│   ├── extensions.py
+│
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── doctor.py
+│   │   ├── patient.py
+│   │   └── appointment.py
+│   │
+│   ├── auth/
+│   │   ├── routes.py
+│   │   └── forms.py
+│   │
+│   ├── admin/
+│   │   └── routes.py
+│   │
+│   ├── doctor/
+│   │   └── routes.py
+│   │
+│   ├── patient/
+│   │   └── routes.py
+│   │
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── navbar.html
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── login.html
+│   │   │   └── signup.html
+│   │   │
+│   │   ├── admin/
+│   │   │   ├── dashboard.html
+│   │   │   └── doctors.html
+│   │   │
+│   │   ├── doctor/
+│   │   │   └── dashboard.html
+│   │   │
+│   │   └── patient/
+│   │       ├── dashboard.html
+│   │       └── doctors.html
+│   │
+│   └── static/
+│       ├── css/
+│       │   └── style.css
+│       └── js/
+│           └── main.js
+│
+└── instance/
+    └── hospital.db

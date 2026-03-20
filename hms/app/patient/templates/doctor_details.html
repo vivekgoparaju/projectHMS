@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor Details{% endblock %}
+
+{% block content %}
+
+<div class="doctor-detail">
+
+    <div class="detail-card">
+        <img src="{{ doctor_details.photo or url_for('patient.static', filename='default-avatar.png') }}" alt="Doctor" height="250">
+        <h3>ID : {{ doctor_details.id }}</h3>
+        <h2>Name : {{ doctor_details.name }}</h2>
+        <h4 class="spec">Specialization : {{ doctor_details.specialization }}</h4>
+
+        <p class="about-text">
+            {{ doctor_details.about }}
+        </p>
+
+        <a href="/patient/appointment/{{ doctor_details.id }}" class="btn appoint">Book Appointment</a> <br>
+        <a href="{{ url_for('patient.doctors') }}" class="btn back">Back</a>
+    </div>
+
+</div>
+
+{% endblock %}
