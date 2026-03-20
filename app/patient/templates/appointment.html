@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment - Hospital Management System{% endblock %}
+
+{% block content %}
+<div class="appointment-background">
+    <div class="appointment-wrapper">
+        <div class="appointment-card">
+            <h2 class="appointment-title">Book an Appointment</h2>
+            <p class="appointment-subtitle">Choose a doctor, select date and time, and confirm your appointment.</p>
+            
+            <form method="POST" action="{{ url_for('patient.book_appointment') }}">
+                
+                <!-- Patient Name -->
+                <div class="form-group">
+                    <label for="patient_name">Your Name</label>
+                    <input type="text" id="patient_name" name="patient_name" placeholder="John Doe" required>
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="patient_email">Email</label>
+                    <input type="email" id="patient_email" name="patient_email" placeholder="example@email.com" required>
+                </div>
+                
+                <!-- Select Doctor -->
+                <div class="form-group">
+                    <label for="doctor">Select Doctor</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="" disabled selected>Select a doctor</option>
+                        <option value="dr_smith">Dr. Smith - Cardiology</option>
+                        <option value="dr_jones">Dr. Jones - Neurology</option>
+                        <option value="dr_clark">Dr. Clark - Pediatrics</option>
+                        <option value="dr_wilson">Dr. Wilson - Orthopedics</option>
+                    </select>
+                </div>
+                
+                <!-- Date -->
+                <div class="form-group">
+                    <label for="appointment_date">Appointment Date</label>
+                    <input type="date" id="appointment_date" name="appointment_date" required>
+                </div>
+                
+                <!-- Time -->
+                <div class="form-group">
+                    <label for="appointment_time">Appointment Time</label>
+                    <input type="time" id="appointment_time" name="appointment_time" required>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Background */
+.appointment-background {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f5f9;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+/* Wrapper to center card */
+.appointment-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+/* Card styling */
+.appointment-card {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title and subtitle */
+.appointment-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #006064;
+}
+.appointment-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #b0bec5;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #006064;
+    box-shadow: 0 0 0 3px rgba(0, 96, 100, 0.15);
+}
+
+/* Submit button */
+.btn-submit {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #006064 0%, #00bcd4 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-submit:hover {
+    background: linear-gradient(90deg, #004d51 0%, #00acc1 100%);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+</style>
+
+{% endblock %}

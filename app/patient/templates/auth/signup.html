@@ -1,0 +1,143 @@
+<div class="signup-background">
+    <div class="signup-wrapper">
+        <div class="signup-card">
+            <h2 class="signup-title">Create Your Account</h2>
+            <p class="signup-subtitle">Join our hospital system and manage your appointments easily.</p>
+            <form method="POST" action="{{ url_for('patient.auth.signup') }}">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+            <p class="signup-footer">Already have an account? <a href="{{ url_for('patient.auth.signin') }}">Sign In</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Full-page background */
+.signup-background {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e0f2f1;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+/* Wrapper to center the card */
+.signup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+/* Card styling */
+.signup-card {
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title and subtitle */
+.signup-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #006064;
+}
+.signup-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #b0bec5;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-group input:focus {
+    border-color: #006064;
+    box-shadow: 0 0 0 3px rgba(0, 96, 100, 0.15);
+}
+
+/* Button styling */
+.btn-submit {
+    width: 100%;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #006064 0%, #00bcd4 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-submit:hover {
+    background: linear-gradient(90deg, #004d51 0%, #00acc1 100%);
+}
+
+/* Footer link */
+.signup-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+.signup-footer a {
+    color: #006064;
+    font-weight: 500;
+    text-decoration: none;
+}
+.signup-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+</style>

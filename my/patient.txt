@@ -1,0 +1,11 @@
+in patient folder
+
+we need to develope all actions patient can be used by patient
+
+features
+    authentication
+    profile (crud)
+    personal dashboard
+    medical history
+    doctors list
+    book appointment
