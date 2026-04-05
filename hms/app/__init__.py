@@ -8,8 +8,23 @@ def create_app():
     app.config['SESSION_TYPE']='filesystem'
     app.config['SESSION_PERMANENT']=True
     Session(app)
+
+    import os
+    # Ensure database folder exists
+    os.makedirs(os.path.join(app.root_path, 'database'), exist_ok=True)
+
+    # Initialize db central connection
+    from . import db
+    db.init_app(app)
+
     # REGISTER BLUREPRINTS
     from .patient import patient
     app.register_blueprint(patient, url_prefix='/patient')
         
+    from .admin import admin_bp
+    app.register_blueprint(admin_bp)
+
+    from .doctor import doctor_bp
+    app.register_blueprint(doctor_bp)
+
     return app

@@ -1,8 +1,0 @@
-CREATE TABLE "users" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"username"	TEXT NOT NULL,
-	"password"	TEXT NOT NULL,
-	"phone"	INTEGER NOT NULL,
-	"email"	TEXT NOT NULL UNIQUE,
-	PRIMARY KEY("id" AUTOINCREMENT)
-);

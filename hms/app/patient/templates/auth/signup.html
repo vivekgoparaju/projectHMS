@@ -3,10 +3,11 @@
         <div class="signup-card">
             <h2 class="signup-title">Create Your Account</h2>
             <p class="signup-subtitle">Join our hospital system and manage your appointments easily.</p>
+            {% if error %}<p style="color: red; font-weight: bold;">{{ error }}</p>{% endif %}
             <form method="POST" action="{{ url_for('patient.auth.signup') }}">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    <label for="username">Username / Full Name</label>
+                    <input type="text" id="username" name="username" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
