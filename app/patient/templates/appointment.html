@@ -14,24 +14,23 @@
                 <!-- Patient Name -->
                 <div class="form-group">
                     <label for="patient_name">Your Name</label>
-                    <input type="text" id="patient_name" name="patient_name" placeholder="John Doe" required>
+                    <input type="text" id="patient_name" name="patient_name" value="{{ user.username }}" placeholder="John Doe" required readonly>
                 </div>
                 
                 <!-- Email -->
                 <div class="form-group">
                     <label for="patient_email">Email</label>
-                    <input type="email" id="patient_email" name="patient_email" placeholder="example@email.com" required>
+                    <input type="email" id="patient_email" name="patient_email" value="{{ user.email }}" placeholder="example@email.com" required readonly>
                 </div>
                 
                 <!-- Select Doctor -->
                 <div class="form-group">
                     <label for="doctor">Select Doctor</label>
-                    <select id="doctor" name="doctor" required>
-                        <option value="" disabled selected>Select a doctor</option>
-                        <option value="dr_smith">Dr. Smith - Cardiology</option>
-                        <option value="dr_jones">Dr. Jones - Neurology</option>
-                        <option value="dr_clark">Dr. Clark - Pediatrics</option>
-                        <option value="dr_wilson">Dr. Wilson - Orthopedics</option>
+                    <select id="doctor" name="doctor_id" required>
+                        <option value="" disabled {% if not selected_doctor_id %}selected{% endif %}>Select a doctor</option>
+                        {% for doc in doctors %}
+                        <option value="{{ doc.id }}" {% if selected_doctor_id|string == doc.id|string %}selected{% endif %}>{{ doc.name }} - {{ doc.specialization }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 
